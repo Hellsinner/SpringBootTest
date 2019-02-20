@@ -33,6 +33,7 @@ public class UserController {
         User insert = mongoTemplate.save(user);
 
         return insert;
+
     }
 
     @GetMapping("/vali/test")
