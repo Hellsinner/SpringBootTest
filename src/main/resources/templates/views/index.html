@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <div>
+            用户名:<input id="username" name="username">
+        </div>
+        <div>
+            密 码:<input id="password" type="password" name="password"><br/>
+        </div>
+        <div>
+            <a id="login">登录</a>
+        </div>
+    </div>
+    <div>
+        <form action="/register" method="post">
+            <input name="date" type="date"><br/>
+            <input type="submit">
+        </form>
+    </div>
+    <div>
+        <form action="/upload" enctype="multipart/form-data" method="post">
+            <input type="file" name="file" > <br/>
+            <input type="submit" value="提交">
+        </form>
+    </div>
+</body>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript">
+    $("#login").click(function(){
+        var username = $("#username").val();
+        var password = $("#password").val();
+
+        $.post("/login", {username:username,password:password}, function (data) {
+            if (data.status == 200) {
+                alert("登录成功")
+            }else {
+                alert("登录失败")
+            }
+        });
+    });
+</script>
+</html>
